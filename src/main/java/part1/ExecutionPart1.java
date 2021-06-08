@@ -23,7 +23,17 @@ public class ExecutionPart1 {
 
         // 2.1 - Criar instancias para serem adicionadas no banco de dados
         Estado estadoParaAdicionar = new Estado("Rio de Janeiro", "RJ");
-        Aluno alunoParaAdicionar = new Aluno("Daniel", 29, estadoParaAdicionar);
+        Aluno alunoParaAdicionar = new Aluno("Pedro", 30, estadoParaAdicionar);
+
+        /* Inicio uma transação */
+        entityManager.getTransaction().begin();
+
+        entityManager.persist(estadoParaAdicionar);
+        entityManager.persist(alunoParaAdicionar);
+
+        /* Termino uma transação */
+        entityManager.getTransaction().commit();
+
 
         // 2.2 - Iniciar uma trasacao para adiconar as instancias no banco de dados
         entityManager.getTransaction().begin();
